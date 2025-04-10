@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Testing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Algorithm Testing Interface</h1>
+    <div class="input-area">
+        <h3>Input Data:</h3>
+        <textarea id="inputData" placeholder="Enter your test data here..."></textarea>
+        <button onclick="runAlgorithm()">Run Algorithm</button>
+    </div>
+    <div id="result">
+        <h3>Result:</h3>
+        <pre id="output"></pre>
+    </div>
+
+    <script src="dist/index.js"></script>
+    <script>
+        document.getElementById('inputData').value = JSON.stringify({
+            "vertices": 4,
+            "edges": [
+                {"from": "D", "to": "A", "weight": 4},
+                {"from": "D", "to": "C", "weight": 7},
+                {"from": "D", "to": "E",  "weight": 3},
+                {"from": "A", "to": "E", "weight": 5},
+                {"from": "E", "to": "C", "weight": 3},
+                {"from": "E", "to": "B", "weight": 2},
+                {"from": "B", "to": "C", "weight": -4},
+            ]
+        })
+        function runAlgorithm() {
+            const input = document.getElementById('inputData').value;
+            try {
+                const parsedInput = JSON.parse(input);
+                const result = bellmanFord(parsedInput);
+                document.getElementById('output').textContent = result;
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html> 
