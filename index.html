@@ -40,8 +40,6 @@
             const input = document.getElementById('inputData').value;
             try {
                 const parsedInput = JSON.parse(input);
-                const result = bellmanFord(parsedInput);
-                document.getElementById('output').textContent = result;
             } catch (error) {
                 document.getElementById('output').textContent = 'Error: ' + error.message;
             }
