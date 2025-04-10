@@ -20,18 +20,22 @@
 
     <script src="dist/index.js"></script>
     <script>
-        document.getElementById('inputData').value = JSON.stringify({
-            "vertices": 4,
+        const inputData = {
+            "start": "D",
+            "end":"A",
             "edges": [
                 {"from": "D", "to": "A", "weight": 4},
                 {"from": "D", "to": "C", "weight": 7},
                 {"from": "D", "to": "E",  "weight": 3},
                 {"from": "A", "to": "E", "weight": 5},
+                {"from": "A", "to": "C", "weight": 4},
                 {"from": "E", "to": "C", "weight": 3},
                 {"from": "E", "to": "B", "weight": 2},
                 {"from": "B", "to": "C", "weight": -4},
+                {"from": "C", "to": "A", "weight": -3},
             ]
-        })
+        }
+        document.getElementById('inputData').value = JSON.stringify(inputData)
         function runAlgorithm() {
             const input = document.getElementById('inputData').value;
             try {
