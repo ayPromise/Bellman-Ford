@@ -82,3 +82,14 @@ const breadthFirstValues = (root:Tree.INode | undefined | null) : any[] | []=>{
 }
 console.log(`3. Breadth First Values:`, breadthFirstValues(A_root))
 
+
+const breadthFirstValuesRecursive = (root:Tree.INode | undefined | null) :  Set<any> | []=>{
+    if(!root) return []
+    const queue = new Set()
+    queue.add(root.value)
+    if(root.left) queue.add(root.left.value)
+    if(root.right) queue.add(root.right?.value)
+
+    return new Set([...queue, ...breadthFirstValuesRecursive(root.left), ...breadthFirstValuesRecursive(root.right)])
+}
+console.log(`4. Breadth First Values(recursive):`, breadthFirstValuesRecursive(A_root))
