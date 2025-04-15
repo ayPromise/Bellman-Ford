@@ -54,3 +54,17 @@ const depthFirstValues = (root:Tree.INode) : any[] | []=>{
 }
 console.log(`1. Deep First Values:`, depthFirstValues(A_root))
 
+
+
+
+const depthFirstValuesRecurvive = (root:Tree.INode|null|undefined) : any[] | [] =>{
+    if(!root) return []
+    const leftHandValues = depthFirstValuesRecurvive(root.left)
+    const rightHandValues = depthFirstValuesRecurvive(root.right)
+
+    return [root.value, ...leftHandValues, ...rightHandValues]
+}
+console.log(`2. Deep First Values(recursive):`, depthFirstValuesRecurvive(A_root))
+
+
+
