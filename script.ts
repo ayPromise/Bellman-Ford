@@ -111,4 +111,9 @@ console.log(`5. Tree sum:`, treeSum(A_root))
 
 
 
+const treeSumRecursive = (root:Tree.INode | undefined | null) :  number | 0 =>{
+    if(!root) return 0
+    return root.value + treeSumRecursive(root.left) + treeSumRecursive(root.right)
+}
+console.log(`6. Tree sum(recursive):`, treeSumRecursive(A_root))
 
