@@ -133,3 +133,10 @@ const treeIncludes = (root:Tree.INode | undefined | null, target:string) :  bool
 console.log(`7. Tree includes:`, treeIncludes(A_root, "E"))
 
 
+
+const treeIncludesReverse = (root:Tree.INode | undefined | null, target:string) :  boolean =>{
+    if(!root) return false
+
+    return root?.value === target || treeIncludesReverse(root?.left, target) || treeIncludesReverse(root?.right, target)
+}
+console.log(`8. Tree includes(recursive):`, treeIncludesReverse(A_root, "H"))
