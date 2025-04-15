@@ -18,12 +18,12 @@ namespace Tree{
     }
 }
 
-const A_root = new Tree.Node(3)
-const B = new Tree.Node(11)
-const C = new Tree.Node(4)
-const D = new Tree.Node(4)
-const E = new Tree.Node(-2)
-const F = new Tree.Node(1)
+const A_root = new Tree.Node("A")
+const B = new Tree.Node("B")
+const C = new Tree.Node("C")
+const D = new Tree.Node("D")
+const E = new Tree.Node("E")
+const F = new Tree.Node("F")
 
 A_root.left = B
 A_root.right = C
@@ -112,8 +112,24 @@ console.log(`5. Tree sum:`, treeSum(A_root))
 
 
 const treeSumRecursive = (root:Tree.INode | undefined | null) :  number | 0 =>{
-    if(!root) return 0
+    if(!root || Number.isInteger(root)) return 0
     return root.value + treeSumRecursive(root.left) + treeSumRecursive(root.right)
 }
 console.log(`6. Tree sum(recursive):`, treeSumRecursive(A_root))
+
+
+const treeIncludes = (root:Tree.INode | undefined | null, target:string) :  boolean =>{
+    if(!root) return false
+    
+    const queue : Tree.INode[] = [ root ]
+    while(queue.length > 0){
+        const node = queue.shift()
+        if(node?.value === target) return true
+        if(node?.left) queue.push(node.left)
+        if(node?.right) queue.push(node.right)
+    }
+    return false
+}
+console.log(`7. Tree includes:`, treeIncludes(A_root, "E"))
+
 
