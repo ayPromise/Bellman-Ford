@@ -68,3 +68,17 @@ console.log(`2. Deep First Values(recursive):`, depthFirstValuesRecurvive(A_root
 
 
 
+const breadthFirstValues = (root:Tree.INode | undefined | null) : any[] | []=>{
+    if(!root) return []
+    const result : any[] = [   ]
+    const queue : Tree.INode[] = [ root ]
+    while(queue.length > 0){
+        const node = queue.shift()
+        result.push(node?.value)
+        if(node?.left) queue.push(node.left)
+        if(node?.right) queue.push(node.right)
+    }
+    return result
+}
+console.log(`3. Breadth First Values:`, breadthFirstValues(A_root))
+
