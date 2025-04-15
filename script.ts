@@ -18,12 +18,12 @@ namespace Tree{
     }
 }
 
-const A_root = new Tree.Node("A")
-const B = new Tree.Node("B")
-const C = new Tree.Node("C")
-const D = new Tree.Node("D")
-const E = new Tree.Node("E")
-const F = new Tree.Node("F")
+const A_root = new Tree.Node(3)
+const B = new Tree.Node(11)
+const C = new Tree.Node(4)
+const D = new Tree.Node(4)
+const E = new Tree.Node(-2)
+const F = new Tree.Node(1)
 
 A_root.left = B
 A_root.right = C
@@ -93,3 +93,22 @@ const breadthFirstValuesRecursive = (root:Tree.INode | undefined | null) :  Set<
     return new Set([...queue, ...breadthFirstValuesRecursive(root.left), ...breadthFirstValuesRecursive(root.right)])
 }
 console.log(`4. Breadth First Values(recursive):`, breadthFirstValuesRecursive(A_root))
+
+
+const treeSum = (root:Tree.INode | null | undefined) : number | 0 =>{
+    let sum = 0
+    const stack = [ root ]
+    while(stack.length > 0)
+    {
+        const node = stack.pop()
+        sum += node?.value
+        if(node?.left) stack.push(node.left)
+        if(node?.right) stack.push(node.right)
+    }
+    return sum
+}
+console.log(`5. Tree sum:`, treeSum(A_root))
+
+
+
+
